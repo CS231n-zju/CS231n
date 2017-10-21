@@ -15,7 +15,7 @@
   - [Blog No.2](https://www.reddit.com/r/cs231n/)
 - Term One Schedule:
 
-![](pic/Screen Shot 2017-10-21 at 2.10.21 PM.png)
+![](pic/1.png)
 
 - 我们预计12月30日完成全部课程；）
 
