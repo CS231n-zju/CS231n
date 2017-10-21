@@ -10,7 +10,7 @@
 
 - 结果如下：
 
-  ![NN](Img/NN.png)
+  ![NN](../Img/NN.png)
 
-  ![KNN](Img/KNN.png)
+  ![KNN](../Img/KNN.png)
 
