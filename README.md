@@ -7,7 +7,7 @@
   - [2017 英文字幕版](https://www.youtube.com/watch?v=6niqTuYFZLQ&list=PLe7764SJVnV10-Nr7e0sBlC9J0LRf4sQo)
   - [2016 英文字幕版](https://www.youtube.com/watch?v=NfnWJUyUJYU&list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
   - [2016 中文字幕版](https://study.163.com/course/introduction/1003223001.htm)
-- 我们参照[Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard) ，简而言之就是作业过程中可以讨论算法，但不可以看别人的代码。
+- 我们参照 [Stanford Honor Code](https://communitystandards.stanford.edu/student-conduct-process/honor-code-and-fundamental-standard) ，简而言之就是作业过程中可以讨论算法，但不可以看别人的代码。
 
 
 - 讨论组：
