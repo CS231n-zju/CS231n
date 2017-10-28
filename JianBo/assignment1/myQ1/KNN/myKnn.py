@@ -5,15 +5,13 @@
 
 import numpy as np
 import sys
-sys.path.append("../../")
+sys.path.append("../../../")
 from cs231n.data_utils import load_CIFAR10
 from cs231n.classifiers import KNearestNeighbor
 import matplotlib.pyplot as plt
 
-
-
 # Load the raw CIFAR-10 data.
-cifar10_dir = '../../cs231n/datasets/cifar-10-batches-py'
+cifar10_dir = '../../../cs231n/datasets/cifar-10-batches-py'
 X_train, y_train, X_test, y_test = load_CIFAR10(cifar10_dir)
 
 # As a sanity check, we print out the size of the training and test data.

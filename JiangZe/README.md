@@ -1,5 +1,6 @@
 # CS231n作业
 
 - [A1Q1](A1Q1/README.md)
-- ​
+- [A1Q2](A1Q2/README.md)
+
 

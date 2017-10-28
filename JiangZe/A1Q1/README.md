@@ -1,6 +1,12 @@
 # A1Q1
 
-### 简单实现NN和KNN
+###  k-Nearest Neighbor classifier
+
+- no-loop的实现：将L2公式拆开进行相应矩阵计算
+- best_k = 10
+- ​
+
+### 简单实现my_NN和my_KNN
 
 - 环境：Win7
 
