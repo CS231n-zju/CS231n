@@ -2,6 +2,8 @@
 
 
 
+* 一本很棒的书： http://neuralnetworksanddeeplearning.com/chap1.html
+
 
 
 ## 论文推荐：
