@@ -39,7 +39,7 @@ def dataPrepare(cifar10_dir,num_training,num_test):
             plt.axis('off')
             if i == 0:
                 plt.title(cls)
-    plt.show()
+    # plt.show()
 
 
     # Subsample the data for more efficient code execution in this exercise

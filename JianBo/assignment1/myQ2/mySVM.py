@@ -42,15 +42,32 @@ loss, grad = svm_loss_naive(W, X_dev, y_dev, 0.0)
 # compare them with your analytically computed gradient. The numbers should match
 # almost exactly along all dimensions.
 
-print('compare1:')
-f = lambda w: svm_loss_naive(w, X_dev, y_dev, 0.0)[0]
-grad_numerical = grad_check_sparse(f, W, grad)
+# print('compare1:')
+# f = lambda w: svm_loss_naive(w, X_dev, y_dev, 0.0)[0]
+# grad_numerical = grad_check_sparse(f, W, grad)
+#
+# # do the gradient check once again with regularization turned on
+# # you didn't forget the regularization gradient did you?
+# print('compare2:')
+# loss, grad = svm_loss_naive(W, X_dev, y_dev, 5e1)
+# f = lambda w: svm_loss_naive(w, X_dev, y_dev, 5e1)[0]
+# grad_numerical = grad_check_sparse(f, W, grad)
 
-# do the gradient check once again with regularization turned on
-# you didn't forget the regularization gradient did you?
-print('compare2:')
-loss, grad = svm_loss_naive(W, X_dev, y_dev, 5e1)
-f = lambda w: svm_loss_naive(w, X_dev, y_dev, 5e1)[0]
-grad_numerical = grad_check_sparse(f, W, grad)
 
+
+# Next implement the function svm_loss_vectorized; for now only compute the loss;
+# we will implement the gradient in a moment.
+tic = time.time()
+loss_naive, grad_naive = svm_loss_naive(W, X_dev, y_dev, 0.000005)
+toc = time.time()
+print('Naive loss: %e computed in %fs' % (loss_naive, toc - tic))
+
+from cs231n.classifiers.linear_svm import svm_loss_vectorized
+tic = time.time()
+loss_vectorized, _ = svm_loss_vectorized(W, X_dev, y_dev, 0.000005)
+toc = time.time()
+print('Vectorized loss: %e computed in %fs' % (loss_vectorized, toc - tic))
+
+# The losses should match but your vectorized implementation should be much faster.
+print('difference: %f' % (loss_naive - loss_vectorized))
 

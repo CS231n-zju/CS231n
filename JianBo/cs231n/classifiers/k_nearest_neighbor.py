@@ -128,23 +128,21 @@ class KNearestNeighbor(object):
     #########################################################################
 
     M = np.dot(X, self.X_train.T)
-    te = np.square(X).sum(axis=1)
-    tr = np.square(self.X_train).sum(axis=1)
-    dists = np.sqrt(-2 * M + tr + np.matrix(te).T)
-    print(M.shape,te.shape,tr.shape,dists.shape)
+    nrow=M.shape[0]
+    ncol=M.shape[1]
+    te = np.diag(np.dot(X,X.T))
+    tr = np.diag(np.dot(self.X_train,self.X_train.T))
+    te= np.reshape(np.repeat(te,ncol),M.shape)
+    tr = np.reshape(np.repeat(tr, nrow), M.T.shape)
+    sq=-2 * M +te+tr.T
+    dists = np.sqrt(sq)
 
-    # traMat = mat(self.X_train)
-    # tesMat = mat(X.T)
-    # multi=traMat*tesMat
-    #
-    # trainSqua=np.sum(np.square(self.X_train),axis=1)
-    # #trainSqua.shape=[5000*1]
-    #
-    # testSqua=np.sum(np.square(X),axis=1)
-    # # trainSqua.shape=[500*1]
-    # print(multi.shape,trainSqua.shape,testSqua.shape)
-    # sumMat=multi+traMat+tesMat
-    # dists=np.sqrt(sumMat)
+    #ans
+    # M = np.dot(X, self.X_train.T)
+    # te = np.square(X).sum(axis=1)
+    # tr = np.square(self.X_train).sum(axis=1)
+    # dists = np.sqrt(-2 * M + tr + np.matrix(te).T)
+    # print(M.shape,te.shape,tr.shape,dists.shape)
 
     #########################################################################
     #                         END OF YOUR CODE                              #
