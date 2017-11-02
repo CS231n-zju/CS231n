@@ -102,28 +102,28 @@ print('difference: %f' % difference)
 # In the file linear_classifier.py, implement SGD in the function
 # LinearClassifier.train() and then run it with the code below.
 #
-# svm = LinearSVM()
-# tic = time.time()
-# loss_hist = svm.train(X_train, y_train, learning_rate=1e-7, reg=2.5e4,
-#                       num_iters=1500, verbose=True)
-# toc = time.time()
-# print('That took %fs' % (toc - tic))
-#
-#
-# # A useful debugging strategy is to plot the loss as a function of
-# # iteration number:
-# plt.plot(loss_hist)
-# plt.xlabel('Iteration number')
-# plt.ylabel('Loss value')
-# plt.show()
-#
-#
-# # Write the LinearSVM.predict function and evaluate the performance on both the
-# # training and validation set
-# y_train_pred = svm.predict(X_train)
-# print('training accuracy: %f' % (np.mean(y_train == y_train_pred), ))
-# y_val_pred = svm.predict(X_val)
-# print('validation accuracy: %f \n' % (np.mean(y_val == y_val_pred), ))
+svm = LinearSVM()
+tic = time.time()
+loss_hist = svm.train(X_train, y_train, learning_rate=1e-7, reg=2.5e4,
+                      num_iters=1500, verbose=True)
+toc = time.time()
+print('That took %fs' % (toc - tic))
+
+
+# A useful debugging strategy is to plot the loss as a function of
+# iteration number:
+plt.plot(loss_hist)
+plt.xlabel('Iteration number')
+plt.ylabel('Loss value')
+plt.show()
+
+
+# Write the LinearSVM.predict function and evaluate the performance on both the
+# training and validation set
+y_train_pred = svm.predict(X_train)
+print('training accuracy: %f' % (np.mean(y_train == y_train_pred), ))
+y_val_pred = svm.predict(X_val)
+print('validation accuracy: %f \n' % (np.mean(y_val == y_val_pred), ))
 
 # Use the validation set to tune hyperparameters (regularization strength and
 # learning rate). You should experiment with different ranges for the learning
