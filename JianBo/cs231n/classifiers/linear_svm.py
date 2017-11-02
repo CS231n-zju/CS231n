@@ -79,15 +79,34 @@ def svm_loss_vectorized(W, X, y, reg):
   #                             END OF YOUR CODE                              #
   #############################################################################
 
+
   scores = X.dot(W)
+  #这里得到一个500*10的矩阵,表示500个image的ground truth
   correct_class_score = scores[np.arange(num_train),y]
+  #重复10次,得到500*10的矩阵,才可以和scores相加相减
+  correct_class_score = np.reshape(np.repeat(correct_class_score,num_classes),(num_train,num_classes))
+  margin = scores-correct_class_score+1.0
+  margin[np.arange(num_train),y]=0
 
-  margin=scores-correct_class_score+1.0
-  print(margin.shape)
-
-  loss += np.sum(margin[margin > 0])
-
+  loss = (np.sum(margin[margin > 0]))/num_train
   loss+=reg*np.sum(W*W)
+
+  #gradient
+  margin[margin>0]=1
+  margin[margin<=0]=0
+
+  row_sum = np.sum(margin, axis=1)                  # 1 by N
+  margin[np.arange(num_train), y] = -row_sum
+  dW += np.dot(X.T, margin)     # D by C
+  # for xi in range(num_train):
+  #   dW+=np.reshape(X[xi],(dW.shape[0],1))*\
+  #       np.reshape(margin[xi],(1,dW.shape[1]))
+
+  dW/=num_train
+  dW += reg * W
+
+
+
   #############################################################################
   # TODO:                                                                     #
   # Implement a vectorized version of the gradient for the structured SVM     #
