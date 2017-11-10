@@ -34,14 +34,21 @@ def softmax_loss_naive(W, X, y, reg):
   #############################################################################
   
   for i in range(num_train):
+    correct_label = int(y[i])
+    dw = np.zeros_like(W)
     scores = X[i].dot(W)
     correct = np.exp(scores[y[i]])
-    a = np.sum(np.exp(scores))
-    loss += -np.log(correct/a) 
+    exp_sum = np.sum(np.exp(scores))
+    loss += -np.log(correct/exp_sum) 
+    
+    for j in range(num_classes):
+      if j != correct_label:
+        dw[:,j] = X[i]*np.exp(scores[j])/(exp_sum)
+    dw[:,correct_label] = X[i]*(correct/exp_sum - 1)
+    dW += dw
 
-  loss = loss/num_train + reg*np.sum(W*W)
-
-
+  loss = loss/num_train + 0.5*reg*np.sum(W*W)
+  dW = dW/num_train + reg*W
 
   #############################################################################
   #                          END OF YOUR CODE                                 #
@@ -66,7 +73,10 @@ def softmax_loss_vectorized(W, X, y, reg):
   # here, it is easy to run into numeric instability. Don't forget the        #
   # regularization!                                                           #
   #############################################################################
-  pass
+  score = np.dot(X, W)
+
+
+
   #############################################################################
   #                          END OF YOUR CODE                                 #
   #############################################################################
