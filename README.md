@@ -33,6 +33,10 @@
 
 
 
+
+
+---
+
 - 阅读材料： [CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/)，[Schedule and Syllabus](http://cs231n.stanford.edu/syllabus.html)
 - 课程链接：
   - [2017 英文字幕版](https://www.youtube.com/watch?v=6niqTuYFZLQ&list=PLe7764SJVnV10-Nr7e0sBlC9J0LRf4sQo)
