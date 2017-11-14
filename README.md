@@ -1,5 +1,7 @@
 # 🐹 CS231n
 
+## Term one Schedual:
+
 |           | 韩    | 王    | 东    | 舒    | 姚    | 琳    | 江    | Subject                     | Hours | Notes     |
 | --------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --------------------------- | ----- | --------- |
 | Lecture 1 | Done | Done | Done | Done | Done | Done | Done | Video                       | 1h    |           |
