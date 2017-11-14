@@ -10,7 +10,7 @@
 
   ​
 
-### Term one Schedual:
+### Term one Schedual :
 
 |           | 韩    | 王    | 东    | 舒    | 姚    | 琳    | 江    | Subject                     | Hours | Notes     |
 | --------- | ---- | ---- | :--- | ---- | ---- | ---- | ---- | --------------------------- | ----- | --------- |
@@ -32,11 +32,11 @@
 | Lecture 5 | Done |      |      |      | Done |      |      | ConvNet notes               | 3h    |           |
 |           | Done |      |      |      | Done |      |      | Video                       | 1h    |           |
 |           |      |      |      |      |      |      |      | Q4                          | 4h    | 11月4日 截止  |
-| Lecture 6 |      |      |      |      |      |      |      | CNN 1                       | 1h    |           |
-|           |      |      |      |      |      |      |      | CNN 2                       | 2h    |           |
-|           |      |      |      |      |      |      |      | CNN 3                       | 2h    |           |
+| Lecture 6 | Done |      |      |      |      |      |      | CNN 1                       | 1h    |           |
+|           | Done |      |      |      |      |      |      | CNN 2                       | 2h    |           |
+|           | Done |      |      |      |      |      |      | CNN 3                       | 2h    |           |
 |           |      |      |      |      |      |      |      | Optional Reading            | 9h    |           |
-|           |      |      |      |      |      |      |      | Video                       | 1h    |           |
+|           | Done |      |      |      |      |      |      | Video                       | 1h    |           |
 |           |      |      |      |      |      |      |      | Q5                          | 2h    |           |
 |           |      |      |      |      |      |      |      | Q6                          | 1h    | 11月11日 截止 |
 | Summary   |      |      |      |      |      |      |      | Unit 1                      | 42h   |           |
@@ -92,9 +92,6 @@
 
 
 
-### Term One Schedule:
-
-![](pic/1.png)
 
 - 我们预计12月30日完成全部课程；）
 
