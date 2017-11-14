@@ -1,14 +1,33 @@
 # 🐹 CS231n
 
-
-
-| test |      |      |
-| ---- | ---- | ---- |
-| 1    |      |      |
-| 2    |      |      |
-|      |      |      |
-
-
+|           | 韩    | 王    | 东    | 舒    | 姚    | 琳    | 江    | Subject                     | Hours | Notes     |
+| --------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | --------------------------- | ----- | --------- |
+| Lecture 1 | Done | Done | Done | Done | Done | Done | Done | Video                       | 1h    |           |
+| Lecture 2 | Done | Done | Done | Done | Done | Done | Done | Python/Numpy tutorial       | 2h    |           |
+|           | Done | Done | Done | Done | Done | Done | Done | Image Classigication        | 1h    |           |
+|           | Done | Done | Done | Done | Done | Done | Done | Linear Classification (1/2) | 1h    |           |
+|           | Done | Done | Done | Done | Done | Done | Done | Video                       | 1h    |           |
+|           | Done | Done | Done | Done | Done | Done | Done | Q1                          | 3h    | 10月21日 截止 |
+| Lecture 3 | Done | Done | Done | Done | Done | Done | Done | Linear Classification (2/2) | 1h    |           |
+|           | Done | Done | Done | Done | Done | Done | Done | Optimization Notes          | 2h    |           |
+|           | Done | Done | Done | Done | Done |      | Done | Video                       | 2h    |           |
+|           | Done | Done |      | Done | Done |      | Done | Q2                          | 4h    |           |
+| Lecture 4 | Done |      | Done | Done | Done |      |      | Backprop notes              | 2h    |           |
+|           | Done |      |      | Done | Done |      |      | Linear Backprop exa         | 2h    | 10月28日 截止 |
+|           | Done |      |      | Done | Done | Done |      | Video                       | 1h    |           |
+|           |      |      |      |      | Done |      |      | Optional Reading            | 10h   |           |
+|           |      |      |      |      | Done |      |      | Q3                          | 3h    |           |
+| Lecture 5 | Done |      |      |      | Done |      |      | ConvNet notes               | 3h    |           |
+|           | Done |      |      |      | Done |      |      | Video                       | 1h    |           |
+|           |      |      |      |      |      |      |      | Q4                          | 4h    | 11月4日 截止  |
+| Lecture 6 |      |      |      |      |      |      |      | CNN 1                       | 1h    |           |
+|           |      |      |      |      |      |      |      | CNN 2                       | 2h    |           |
+|           |      |      |      |      |      |      |      | CNN 3                       | 2h    |           |
+|           |      |      |      |      |      |      |      | Optional Reading            | 9h    |           |
+|           |      |      |      |      |      |      |      | Video                       | 1h    |           |
+|           |      |      |      |      |      |      |      | Q5                          | 2h    |           |
+|           |      |      |      |      |      |      |      | Q6                          | 1h    | 11月11日 截止 |
+| Summary   |      |      |      |      |      |      |      | Unit 1                      | 42h   |           |
 
 
 
