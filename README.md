@@ -1,14 +1,12 @@
 # 🐹 CS231n
 
 - 阅读材料： [CS231n Convolutional Neural Networks for Visual Recognition](http://cs231n.github.io/)，[Schedule and Syllabus](http://cs231n.stanford.edu/syllabus.html)
-
 - 课程链接：
-
   - [2017 英文字幕版](https://www.youtube.com/watch?v=6niqTuYFZLQ&list=PLe7764SJVnV10-Nr7e0sBlC9J0LRf4sQo)
   - [2016 英文字幕版](https://www.youtube.com/watch?v=NfnWJUyUJYU&list=PLkt2uSq6rBVctENoVBg1TpCC7OQi31AlC)
   - [2016 中文字幕版](https://study.163.com/course/introduction/1003223001.htm)
 
-  ​
+---
 
 ### Term one Schedual :
 
@@ -24,11 +22,11 @@
 |           | Done | Done | Done | Done | Done | Done | Done | Optimization Notes          | 2h    |           |
 |           | Done | Done | Done | Done | Done |      | Done | Video                       | 2h    |           |
 |           | Done | Done |      | Done | Done |      | Done | Q2                          | 4h    |           |
-| Lecture 4 | Done |      | Done | Done | Done |      |      | Backprop notes              | 2h    |           |
-|           | Done |      |      | Done | Done |      |      | Linear Backprop exa         | 2h    | 10月28日 截止 |
-|           | Done |      |      | Done | Done | Done |      | Video                       | 1h    |           |
+| Lecture 4 | Done |      | Done | Done | Done |      | Done | Backprop notes              | 2h    |           |
+|           | Done |      |      | Done | Done |      | Done | Linear Backprop exa         | 2h    | 10月28日 截止 |
+|           | Done |      |      | Done | Done | Done | Done | Video                       | 1h    |           |
 |           |      |      |      |      | Done |      |      | Optional Reading            | 10h   |           |
-|           |      |      |      |      | Done |      |      | Q3                          | 3h    |           |
+|           |      |      |      |      | Done |      | Done | Q3                          | 3h    |           |
 | Lecture 5 | Done |      |      |      | Done |      |      | ConvNet notes               | 3h    |           |
 |           | Done |      |      |      | Done |      |      | Video                       | 1h    |           |
 |           |      |      |      |      |      |      |      | Q4                          | 4h    | 11月4日 截止  |
@@ -38,7 +36,7 @@
 |           |      |      |      |      |      |      |      | Optional Reading            | 9h    |           |
 |           | Done |      |      |      |      |      |      | Video                       | 1h    |           |
 |           |      |      |      |      |      |      |      | Q5                          | 2h    |           |
-|           |      |      |      |      |      |      |      | Q6                          | 1h    | 11月11日 截止 |
+|           |      |      |      |      |      |      |      | Q6  (opt)                   | 1h    | 11月11日 截止 |
 | Summary   |      |      |      |      |      |      |      | Unit 1                      | 42h   |           |
 
 
