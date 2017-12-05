@@ -4,6 +4,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 # from past.builtins import xrange
 
+def relu(x):
+    return x * (x > 0)
+
+def softmax(x):
+    exp_x = np.exp(x)
+    sum_exp = np.expand_dims(np.sum(exp_x,axis = 1),axis=1)
+    return exp_x/sum_exp
+
+
+
 class TwoLayerNet(object):
   """
   A two-layer fully-connected neural network. The net has an input dimension of
@@ -76,15 +86,17 @@ class TwoLayerNet(object):
     # Store the result in the scores variable, which should be an array of      #
     # shape (N, C).                                                             #
     #############################################################################
-    pass
+    hidden1 = np.dot(X, W1) + b1
+
+    scores = np.dot(relu(hidden1), W2) + b2
     #############################################################################
     #                              END OF YOUR CODE                             #
     #############################################################################
-    
+
     # If the targets are not given then jump out, we're done
     if y is None:
       return scores
-
+    scores1 = scores
     # Compute the loss
     loss = None
     #############################################################################
@@ -93,7 +105,32 @@ class TwoLayerNet(object):
     # in the variable loss, which should be a scalar. Use the Softmax           #
     # classifier loss.                                                          #
     #############################################################################
-    pass
+    C = scores.shape[-1]
+
+    scores = softmax(scores)
+
+    y_one_hot = np.eye(C)[y].astype('int')
+
+    correct_score_loss = scores[np.where(y_one_hot)]
+
+    loss_term = np.mean(-np.log(correct_score_loss))
+
+    reg_term = reg * (np.sum(np.square(W1)) + np.sum(np.square(W2)))
+
+
+    loss = loss_term + reg_term
+
+    # score_exp = np.exp(scores1)
+    #
+    # exp_sum = np.sum(score_exp,axis = 1).reshape(5,1)
+    #
+    # correct_index = np.eye(3)[y.reshape(len(y),)].astype('int')
+    #
+    # correct = np.exp(scores1[np.where(correct_index)].reshape(5,1))
+    #
+    # loss = np.mean(-np.log(correct/exp_sum)) + reg*(np.sum(np.square(W1))+np.sum(np.square(W2)))
+
+
     #############################################################################
     #                              END OF YOUR CODE                             #
     #############################################################################
@@ -105,7 +142,19 @@ class TwoLayerNet(object):
     # and biases. Store the results in the grads dictionary. For example,       #
     # grads['W1'] should store the gradient on W1, and be a matrix of same size #
     #############################################################################
-    pass
+
+
+
+
+
+
+
+
+
+
+
+
+
     #############################################################################
     #                              END OF YOUR CODE                             #
     #############################################################################
@@ -215,5 +264,3 @@ class TwoLayerNet(object):
     ###########################################################################
 
     return y_pred
-
-
