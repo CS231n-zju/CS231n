@@ -158,15 +158,6 @@ num_classes = 10
 net = TwoLayerNet(input_dim, hidden_dim, num_classes)
 best_net = None
 
-from cs231n.classifiers.neural_net import TwoLayerNet
-
-input_dim = X_train_feats.shape[1]
-hidden_dim = 500
-num_classes = 10
-
-net = TwoLayerNet(input_dim, hidden_dim, num_classes)
-best_net = None
-
 ################################################################################
 # TODO: Train a two-layer neural network on image features. You may want to    #
 # cross-validate various parameters as in previous sections. Store your best   #
@@ -175,9 +166,9 @@ best_net = None
 workers=10
 best_accuracy = 0
 
-learning_rates = [1e-4,1e-3,2e-3,2e-2,1e-1,2e-1]
+learning_rates = [0.9]
 numer_of_training_epochs = [4000]
-reg = [0.25]
+reg = [0.002286,0.002287,0.002288,0.002289,0.00229]
 #learning_rates = [10 ** np.random.uniform(-4, -2) for _ in range(workers)]
 #numer_of_training_epochs = [random.randint(4000,5000) for _ in range(workers)]
 
@@ -202,7 +193,6 @@ print("Best accuracy is: %.10lf\n" % best_accuracy)
 ################################################################################
 #                              END OF YOUR CODE                                #
 ################################################################################
-
 
 
 
