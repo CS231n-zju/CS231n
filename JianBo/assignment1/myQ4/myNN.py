@@ -216,7 +216,6 @@ X_train, y_train, X_val, y_val, X_test, y_test = get_CIFAR10_data()
 workers = 10
 input_size = 32 * 32 * 3
 num_classes = 10
-num_iters = 1000
 best_accuracy = 0
 
 for worki in range(0, workers):

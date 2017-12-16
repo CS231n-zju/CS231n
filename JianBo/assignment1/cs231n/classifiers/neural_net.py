@@ -207,7 +207,7 @@ class TwoLayerNet(object):
       #                             END OF YOUR CODE                          #
       #########################################################################
 
-      if verbose and it % 100 == 0:
+      if verbose and it % 1000 == 0:
         print('iteration %d / %d: loss %f' % (it, num_iters, loss))
 
       # Every epoch, check train and val accuracy and decay learning rate.
@@ -249,7 +249,7 @@ class TwoLayerNet(object):
     ###########################################################################
     W1, b1 = self.params['W1'], self.params['b1']
     W2, b2 = self.params['W2'], self.params['b2']
-    N, D = X.shape
+
     h1 = np.maximum(0, np.dot(X, W1) + b1)
     h2 = np.dot(h1, W2) + b2
     scores = h2
