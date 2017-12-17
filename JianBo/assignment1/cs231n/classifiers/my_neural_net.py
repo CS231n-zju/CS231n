@@ -77,9 +77,9 @@ class TwoLayerNet(object):
     # Store the result in the scores variable, which should be an array of      #
     # shape (N, C).                                                             #
     #############################################################################
-    hidden_layer = np.maximum(0, np.dot(X, W1) + b1)  # note, ReLU activation
-    scores = np.dot(hidden_layer, W2) + b2
-
+    h1 = np.maximum(0, np.dot(X, W1) + b1)
+    h2 = np.dot(h1, W2) + b2
+    scores = h2
     #############################################################################
     #                              END OF YOUR CODE                             #
     #############################################################################
@@ -98,20 +98,13 @@ class TwoLayerNet(object):
     # classifier loss.                                                          #
     #############################################################################
     # max_LogC=-np.max(scores,axis=1,keepdims=True)
+    exp_class_score=np.exp(scores)
+    exp_correct_class_score=exp_class_score[np.arange(N),y]
 
-    num_examples = X.shape[0]
-    # get unnormalized probabilities
-    exp_scores = np.exp(scores)
-    # normalize them for each example
-    probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
+    loss=-np.log(exp_correct_class_score/np.sum(exp_class_score,axis=1))
+    loss=sum(loss)/N
 
-    corect_logprobs = -np.log(probs[range(num_examples), y])
-
-    data_loss = np.sum(corect_logprobs) / num_examples
-    reg_loss = 0.5 * reg*(np.sum(W2**2)+np.sum(W1**2))
-
-    loss = data_loss + reg_loss
-
+    loss+=reg*(np.sum(W2**2)+np.sum(W1**2))
     #############################################################################
     #                              END OF YOUR CODE                             #
     #############################################################################
@@ -123,33 +116,31 @@ class TwoLayerNet(object):
     # and biases. Store the results in the grads dictionary. For example,       #
     # grads['W1'] should store the gradient on W1, and be a matrix of same size #
     #############################################################################
-
     # layer2
+    dh2 = exp_class_score / np.sum(exp_class_score, axis=1,keepdims=True)
+    dh2[np.arange(N),y]-=1
+    dh2/=N
 
-    dscores = probs
-    dscores[range(num_examples), y] -= 1
-    dscores /= num_examples
+    dW2=np.dot(h1.T,dh2)
+    dW2+=2*reg*W2
 
-    dW2 = np.dot(hidden_layer.T, dscores)
-    db2 = np.sum(dscores, axis=0)
+    db2=np.sum(dh2,axis=0)
 
+    #layer1
+    dh1=np.dot(dh2,W2.T)
 
-    # layer1
-    dhidden = np.dot(dscores, W2.T)
-    dhidden[hidden_layer <= 0] = 0
+    dW1X_b1=dh1
+    dW1X_b1[h1<=0]=0
 
-    dW1 = np.dot(X.T, dhidden)
-    db1 = np.sum(dhidden, axis=0)
+    dW1=np.dot(X.T,dW1X_b1)
+    dW1 += 2*reg * W1
 
-    dW2 += reg * W2
-    dW1 += reg * W1
+    db1=np.sum(dW1X_b1,axis=0)
 
     grads['W2']=dW2
     grads['b2']=db2
     grads['W1']=dW1
     grads['b1'] = db1
-
-
     #############################################################################
     #                              END OF YOUR CODE                             #
     #############################################################################
@@ -210,7 +201,6 @@ class TwoLayerNet(object):
       # using stochastic gradient descent. You'll need to use the gradients   #
       # stored in the grads dictionary defined above.                         #
       #########################################################################
-
       for param_name in self.params:
         self.params[param_name]+=-learning_rate*grads[param_name]
       #########################################################################
@@ -260,10 +250,10 @@ class TwoLayerNet(object):
     W1, b1 = self.params['W1'], self.params['b1']
     W2, b2 = self.params['W2'], self.params['b2']
 
-    hidden_layer = np.maximum(0, np.dot(X, W1) + b1)
-    scores = np.dot(hidden_layer, W2) + b2
-    y_pred = np.argmax(scores, axis=1)
-
+    h1 = np.maximum(0, np.dot(X, W1) + b1)
+    h2 = np.dot(h1, W2) + b2
+    scores = h2
+    y_pred=np.argmax(scores,axis=1)
     ###########################################################################
     #                              END OF YOUR CODE                           #
     ###########################################################################
