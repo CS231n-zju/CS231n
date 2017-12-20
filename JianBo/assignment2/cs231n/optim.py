@@ -153,6 +153,7 @@ def adam(x, dx, config=None):
     v=config['v']
     eps = config['epsilon']
     t=config['t']
+    t+=1
 
     m = beta1 * m + (1 - beta1) * dx
     mt = m / (1 - beta1 ** t)
@@ -164,6 +165,6 @@ def adam(x, dx, config=None):
     ###########################################################################
     config['m'] = m
     config['v'] = v
-    config['t'] =t+1
+    config['t'] +=1
 
     return next_x, config

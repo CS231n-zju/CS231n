@@ -192,15 +192,20 @@ class FullyConnectedNet(object):
         # beta2, etc. Scale parameters should be initialized to one and shift      #
         # parameters should be initialized to zero.                                #
         ############################################################################
+
         for layer in range(self.num_layers):
             if layer==0:
                 layer_dim=(input_dim,hidden_dims[layer])
-            if layer==self.num_layers-1:
+            elif layer==self.num_layers-1:
                 layer_dim = (hidden_dims[layer - 1], num_classes)
-            if layer>0 and layer<self.num_layers-1:
+            else:
                 layer_dim = (hidden_dims[layer-1], hidden_dims[layer])
             self.params['W%d'%(layer+1)] = weight_scale * np.random.randn(layer_dim[0],layer_dim[1])
             self.params['b%d'%(layer+1)] = np.zeros(layer_dim[1])
+            #batch normalization intialize
+            if self.use_batchnorm and layer!=self.num_layers-1:
+                self.params['gamma%d' % (layer + 1)] = np.ones(layer_dim[1])
+                self.params['beta%d' % (layer + 1)] = np.zeros(layer_dim[1])
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
@@ -258,20 +263,28 @@ class FullyConnectedNet(object):
         # self.bn_params[1] to the forward pass for the second batch normalization #
         # layer, etc.                                                              #
         ############################################################################
-        input=X
-        output=None
+        inputi=X
+        # use for BP
         fc_cache_list=[]
         relu_cache_list=[]
+        bn_cache_list=[]
         for layer in range(self.num_layers):
             Wi,bi=self.params['W%d'%(layer+1)],self.params['b%d'%(layer+1)]
-            ai, fc_cachei = affine_forward(input, Wi, bi)
-            output, relu_cachei = relu_forward(ai)
-            input=output
-
-            # use for BP
+            outi, fc_cachei = affine_forward(inputi, Wi, bi)
             fc_cache_list.append(fc_cachei)
+
+            #the last layer of the network should not be normalized
+            if self.use_batchnorm and layer!=self.num_layers-1:
+                gammai, betai = self.params['gamma%d' % (layer + 1)], self.params['beta%d' % (layer + 1)]
+                outi, bn_cachei=batchnorm_forward(outi, gammai, betai, self.bn_params[layer])
+                bn_cache_list.append(bn_cachei)
+
+            outi, relu_cachei = relu_forward(outi)
             relu_cache_list.append(relu_cachei)
-        scores = output
+
+            inputi=outi
+
+        scores = outi
         ############################################################################
         #                             END OF YOUR CODE                             #
         ############################################################################
@@ -304,8 +317,13 @@ class FullyConnectedNet(object):
         loss = data_loss + reg_loss
 
         for layer in list(range(self.num_layers,0,-1)):
-            dWi, dbi=0,0
+
             dai = relu_backward(dout, relu_cache_list[layer-1])
+            # the last layer of the network should not be normalized
+            if self.use_batchnorm and layer != self.num_layers:
+                dai, dgamma, dbeta = batchnorm_backward(dai, bn_cache_list[layer-1])
+                grads['gamma%d' % (layer)] = dgamma
+                grads['beta%d' % (layer)] = dbeta
             dxi, dWi, dbi = affine_backward(dai, fc_cache_list[layer-1])
             dWi+=self.reg*self.params['W%d' % (layer)]
 
