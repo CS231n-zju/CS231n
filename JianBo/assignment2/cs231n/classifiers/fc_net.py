@@ -268,19 +268,26 @@ class FullyConnectedNet(object):
         fc_cache_list=[]
         relu_cache_list=[]
         bn_cache_list=[]
+        dropout_cache_list=[]
         for layer in range(self.num_layers):
+            #forward
             Wi,bi=self.params['W%d'%(layer+1)],self.params['b%d'%(layer+1)]
             outi, fc_cachei = affine_forward(inputi, Wi, bi)
             fc_cache_list.append(fc_cachei)
 
-            #the last layer of the network should not be normalized
+            #batch normalization:the last layer of the network should not be normalized
             if self.use_batchnorm and layer!=self.num_layers-1:
                 gammai, betai = self.params['gamma%d' % (layer + 1)], self.params['beta%d' % (layer + 1)]
                 outi, bn_cachei=batchnorm_forward(outi, gammai, betai, self.bn_params[layer])
                 bn_cache_list.append(bn_cachei)
-
+            #relu
             outi, relu_cachei = relu_forward(outi)
             relu_cache_list.append(relu_cachei)
+
+            #dropout
+            if self.use_dropout:
+                outi, dropout_cachei=dropout_forward(outi, self.dropout_param)
+                dropout_cache_list.append(dropout_cachei)
 
             inputi=outi
 
@@ -317,20 +324,25 @@ class FullyConnectedNet(object):
         loss = data_loss + reg_loss
 
         for layer in list(range(self.num_layers,0,-1)):
-
-            dai = relu_backward(dout, relu_cache_list[layer-1])
-            # the last layer of the network should not be normalized
+            #dropout
+            if self.use_dropout:
+                dout=dropout_backward(dout, dropout_cache_list[layer-1])
+            #relu
+            dout = relu_backward(dout, relu_cache_list[layer-1])
+            #batch normalization: the last layer of the network should not be normalized
             if self.use_batchnorm and layer != self.num_layers:
-                dai, dgamma, dbeta = batchnorm_backward(dai, bn_cache_list[layer-1])
+                dout, dgamma, dbeta = batchnorm_backward(dout, bn_cache_list[layer-1])
                 grads['gamma%d' % (layer)] = dgamma
                 grads['beta%d' % (layer)] = dbeta
-            dxi, dWi, dbi = affine_backward(dai, fc_cache_list[layer-1])
+
+            #backforward
+            dxi, dWi, dbi = affine_backward(dout, fc_cache_list[layer-1])
             dWi+=self.reg*self.params['W%d' % (layer)]
 
             grads['W%d' % (layer)] = dWi
             grads['b%d' % (layer)] = dbi
 
-            dout = np.dot(dai, self.params['W%d' % (layer)].T)
+            dout = np.dot(dout, self.params['W%d' % (layer)].T)
 
         ############################################################################
         #                             END OF YOUR CODE                             #
